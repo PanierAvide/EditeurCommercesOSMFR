@@ -1,1 +1,0 @@
-L'objectif est de renseigner dans OpenStreetMap autant de panneaux que vous en trouverez sur le terrain. Ceux-ci sont systématiquement à proximité des bureaux de votes (mairies, salles des fêtes, écoles publiques...).
