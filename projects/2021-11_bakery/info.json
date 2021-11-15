@@ -64,6 +64,11 @@
 				{ "type": "hidden", "tags": { "shop": "bakery", "ref:FR:SIRET": "*", "source": "*" } },
 				{ "type": "text", "name": "Nom", "tag": "name" },
 				{ "type": "nsi", "name": "Marque", "path": "brands/shop/bakery", "locationSet": "fr", "optional": true },
+				{ "type": "select", "name": "Type de boulangerie", "tag": "_select1", "optional": true, "values": [
+					{ "l": "Artisan boulanger", "tags": { "craft": "bakery", "produced_on_site": "yes", "bakehouse": "yes" } },
+					{ "l": "Boulangerie industrielle", "tags": { "produced_on_site": "no", "bakehouse": "yes" } },
+					{ "l": "Dépôt de pain", "tags": { "produced_on_site": "no", "bakehouse": "no" } }
+				] },
 				{ "type": "text", "name": "Téléphone", "tag": "phone", "optional": true, "description": "Au format international : +33 X XX XX XX XX" },
 				{ "type": "text", "name": "Courriel", "tag": "email", "optional": true },
 				{ "type": "text", "name": "Site web officiel", "tag": "website", "optional": true },
@@ -73,8 +78,8 @@
 					{ "v": "no", "l": "Pas accessible" }
 				] },
 				{ "type": "3states", "name": "Vend des pâtisseries ?", "tag": "pastry" },
-				{ "type": "3states", "name": "Vend des chocolats ?", "tag": "chocolate" },
-				{ "type": "3states", "name": "Vend du bio ?", "tag": "organic" },
+				{ "type": "3states", "name": "Vend du chocolat ?", "tag": "chocolate" },
+				{ "type": "3states", "name": "Propose du bio ?", "tag": "organic" },
 				{ "type": "textarea", "name": "Autres informations", "tag": "note", "description": "Horaires, infos pratiques...", "optional": true }
 			],
 			"title": {
