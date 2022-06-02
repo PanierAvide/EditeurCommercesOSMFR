@@ -1,6 +1,4 @@
 {
-	"Catalyseur d'énergies pour OpenStreetMap": "Catalyseur d'énergies pour OpenStreetMap",
-	"Projet du mois OpenStreetMap": "Projet du mois OpenStreetMap",
 	"Copyright 2020 ProjetDuMois.fr - Développé sous licence libre AGPL 3.0": "Copyright 2020 ProjetDuMois.fr - Développé sous licence libre AGPL 3.0",
 	"Un projet supporté par l'association": "Un projet supporté par l'association",
 	"Ce projet adhère aux": "Ce projet adhère aux",
@@ -144,5 +142,8 @@
 	"Veuillez réessayer un peu plus tard, merci pour votre compréhension.": "Veuillez réessayer un peu plus tard, merci pour votre compréhension.",
 	"D'autres projets": "D'autres projets",
 	"Plus d'infos sur ce champ": "Plus d'infos sur ce champ",
-	"Retrouvez l'ensemble des données directement sur le site d'OpenStreetMap.": "Retrouvez l'ensemble des données directement sur le site d'OpenStreetMap."
+	"Retrouvez l'ensemble des données directement sur le site d'OpenStreetMap.": "Retrouvez l'ensemble des données directement sur le site d'OpenStreetMap.",
+	"BANCO": "BANCO",
+	"Les commerces de France dans OpenStreetMap": "Les commerces de France dans OpenStreetMap",
+	"Catalyseur d'énergies pour OpenStreetMap": "Catalyseur d'énergies pour OpenStreetMap"
 }
