@@ -1,0 +1,94 @@
+{
+	"id": "2022-01_fuel",
+	"title": "Stations-services",
+	"start_date": "2022-01-01",
+	"end_date": "2050-12-31",
+	"summary": "Une station-service est une infrastructure positionnée sur le bord d'une route destinée à fournir du carburant aux automobilistes.",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/FR:Tag:amenity%3Dfuel"
+	},
+	"database": {
+		"osmium_tag_filter": "nw/amenity=fuel",
+		"imposm": {
+			"types": ["point", "polygon"],
+			"mapping": { "amenity": ["fuel"] }
+		}
+	},
+	"datasources": [
+		{
+			"source": "osmose",
+			"item": "8202", "country": "france*",
+			"name": "Station à compléter",
+			"description": "Cette station existe déjà dans OSM, et des données supplémentaires peuvent être ajoutées depuis une source officielle. Vérifiez ces infos puis validez leur ajout.", "color": "#4A148C",
+			"buttons": { "edit": "Compléter cette station" }
+		},
+		{
+			"source": "notes",
+			"name": "Station à intégrer",
+			"description": "Une personne a créé une note ici, vérifiez puis éditez OSM pour intégrer les informations.",
+			"terms": [ "essence", "carburant" ]
+		},
+		{
+			"source": "osm",
+			"name": "Station dans OSM",
+			"description": "Cette station existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+		},
+		{
+			"source": "background",
+			"tiles": [ "https://proxy-ign.openstreetmap.fr/94GjiyqD/bdortho/{z}/{x}/{y}.jpg" ],
+			"name": "Vue aérienne",
+			"icon": "aerial",
+			"attribution": "<a href=\"https://openstreetmap.fr/bdortho\" target=\"_blank\">&copy; BDOrtho IGN</a>"
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Photos de rue",
+			"icon": "picture"
+		},
+		{ "source": "stats" }
+	],
+	"statistics": {
+		"count": true,
+		"feature_name": "stations",
+		"osmose_tasks": "stations actualisées",
+		"points": { "add": 1, "edit": 3, "note": 2 }
+	},
+	"editors": {
+		"all": {
+			"comment": "Contribution sur les stations-services",
+			"hashtags": "commercesosmfr,carburant"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "amenity": "fuel", "ref:FR:prix-carburants": "*", "source": "*" } },
+				{ "type": "text", "name": "Nom", "tag": "name" },
+				{ "type": "nsi", "name": "Marque", "path": "brands/amenity/fuel", "locationSet": "fr", "optional": true },
+				{ "type": "3states", "name": "Vend du diesel ?", "tag": "fuel:diesel" },
+				{ "type": "3states", "name": "Vend du SP95 ?", "tag": "fuel:octane_95" },
+				{ "type": "3states", "name": "Vend du SP95-E10 ?", "tag": "fuel:e10" },
+				{ "type": "3states", "name": "Vend du SP98 ?", "tag": "fuel:octane_98" },
+				{ "type": "3states", "name": "Vend du GPL ?", "tag": "fuel:lpg" },
+				{ "type": "3states", "name": "Vend du E85 ?", "tag": "fuel:e85" },
+				{ "type": "3states", "name": "Vend du AdBlue ?", "tag": "fuel:adblue" },
+				{ "type": "3states", "name": "Vend du diesel poids-lours ?", "tag": "fuel:HGV_diesel" },
+				{ "type": "select", "name": "Mode de paiement", "tag": "_select1", "values": [
+					{ "l": "Cartes bancaires", "tags": { "payment:debit_cards": "yes", "payment:credit_cards": "yes" } },
+					{ "l": "CB + espèces", "tags": { "payment:debit_cards": "yes", "payment:credit_cards": "yes", "payment:cash": "yes" } },
+					{ "l": "CB + espèces + chèques", "tags": { "payment:debit_cards": "yes", "payment:credit_cards": "yes", "payment:cash": "yes", "payment:cheque": "yes" } }
+				] },
+				{ "type": "3states", "name": "Station de gonflage de pneus ?", "tag": "compressed_air" },
+				{ "type": "3states", "name": "Toilettes ?", "tag": "toilets" },
+				{ "type": "number", "name": "Hauteur max (en mètres)", "tag": "maxheight", "optional": false },
+				{ "type": "textarea", "name": "Autres informations", "tag": "note", "description": "Horaires, infos pratiques...", "optional": true }
+			],
+			"title": {
+				"add": "Ajouter une station",
+				"edit": "Compléter la station"
+			}
+		},
+		"iD": {
+			"background": "fr.ign.bdortho"
+		}
+	}
+}

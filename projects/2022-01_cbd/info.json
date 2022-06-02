@@ -1,0 +1,78 @@
+{
+	"id": "2022-01_cbd",
+	"title": "Magasin CBD",
+	"start_date": "2022-01-01",
+	"end_date": "9999-12-31",
+	"summary": "Un magasin CBD est spécialisé dans la vente de produits contenant du CBD, une forme non psychoactive de cannabis",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/FR:Tag:shop%3Dcannabis"
+	},
+	"database": {
+		"osmium_tag_filter": "nw/shop=cannabis",
+		"imposm": {
+			"types": ["point", "polygon"],
+			"mapping": { "shop": ["cannabis"], "cannabis:cbd": ["yes", "only"] }
+		}
+	},
+	"datasources": [
+		{
+			"source": "notes",
+			"name": "Magasin à intégrer",
+			"description": "Une personne a créé une note ici, vérifiez puis éditez OSM pour intégrer les informations.",
+			"terms": [ "cbd", "cannabis" ]
+		},
+		{
+			"source": "osm",
+			"name": "Magasin dans OSM",
+			"description": "Ce magasin CBD existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+		},
+		{
+			"source": "background",
+			"tiles": [ "https://proxy-ign.openstreetmap.fr/94GjiyqD/bdortho/{z}/{x}/{y}.jpg" ],
+			"name": "Vue aérienne",
+			"icon": "aerial",
+			"attribution": "<a href=\"https://openstreetmap.fr/bdortho\" target=\"_blank\">&copy; BDOrtho IGN</a>"
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Photos de rue",
+			"icon": "picture"
+		},
+		{ "source": "stats" }
+	],
+	"statistics": {
+		"count": true,
+		"feature_name": "magasins",
+		"osmose_tasks": "magasins importés",
+		"points": { "add": 3, "edit": 2, "note": 1 }
+	},
+	"editors": {
+		"all": {
+			"comment": "Contribution sur les magasins CBD",
+			"hashtags": "commercesosmfr,CBD"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "shop": "cannabis", "cannabis:cbd": "only", "ref:FR:SIRET": "*", "source": "*" } },
+				{ "type": "text", "name": "Nom", "tag": "name" },
+				{ "type": "text", "name": "Téléphone", "tag": "phone", "optional": true, "description": "Au format international : +33 X XX XX XX XX" },
+				{ "type": "text", "name": "Courriel", "tag": "email", "optional": true },
+				{ "type": "text", "name": "Site web officiel", "tag": "website", "optional": true },
+				{ "type": "select", "name": "Accessibilité fauteuil roulant", "tag": "wheelchair", "optional": true, "values": [
+					{ "v": "yes", "l": "Complètement accessible" },
+					{ "v": "limited", "l": "Partiellement accessible" },
+					{ "v": "no", "l": "Pas accessible" }
+				] },
+				{ "type": "textarea", "name": "Autres informations", "tag": "note", "description": "Horaires, infos pratiques...", "optional": true }
+			],
+			"title": {
+				"add": "Ajouter un magasin",
+				"edit": "Compléter le magasin"
+			}
+		},
+		"iD": {
+			"background": "fr.ign.bdortho"
+		}
+	}
+}
