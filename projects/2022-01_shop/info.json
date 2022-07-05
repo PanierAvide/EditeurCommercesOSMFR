@@ -1,0 +1,90 @@
+{
+	"id": "2022-01_shop",
+	"title": "Commerces",
+	"start_date": "2022-01-01",
+	"end_date": "9999-12-31",
+	"summary": "Établissement spécialisé dans la vente de détail",
+	"links": {
+		"osmwiki": "https://wiki.openstreetmap.org/wiki/FR:Key:shop"
+	},
+	"database": {
+		"osmium_tag_filter": "nw/shop nw/craft nw/office=educational_institution,employment_agency, estate_agent,guide,insurance,moving_company,private_investigator,travel_agent,visa,it nw/amenity=bar,cafe,fast_food,food_court,ice_cream,pub,restaurant,driving_school,boat_rental,car_rental,car_wash,fuel,bank,bureau_de_change,pharmacy,cinema,nightclub,animal_boarding,animal_breeding,crematorium,internet_cafe,post_office,public_bath,pharmacy,vehicle_inspection",
+		"imposm": {
+			"types": ["point", "polygon"],
+			"mapping": {
+				"shop": ["__any__"],
+				"craft": ["__any__"],
+				"office": ["educational_institution","employment_agency"," estate_agent","guide","insurance","moving_company","private_investigator","travel_agent","visa","it"],
+				"amenity": ["bar","cafe","fast_food","food_court","ice_cream","pub","restaurant","driving_school","boat_rental","car_rental","car_wash","fuel","bank","bureau_de_change","pharmacy","cinema","nightclub","animal_boarding","animal_breeding","crematorium","internet_cafe","post_office","public_bath","pharmacy","vehicle_inspection"]
+			}
+		}
+	},
+	"datasources": [
+		{
+			"source": "osmose",
+			"item": "8310", "country": "france*",
+			"name": "Commerce à localiser",
+			"description": "Il y a un commerce à proximité. Vérifiez s'il existe toujours, sa position exacte sur le terrain, puis ajoutez-le à OpenStreetMap.",
+			"buttons": { "add": "Intégrer ce commerce" }
+		},
+		{
+			"source": "notes",
+			"name": "Commerce à intégrer",
+			"description": "Une personne a créé une note ici, vérifiez puis éditez OSM pour intégrer les informations.",
+			"terms": [ "commerce", "shop", "boutique", "magasin", "vente" ]
+		},
+		{
+			"source": "osm",
+			"name": "Commerce dans OSM",
+			"description": "Ce commerce existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+		},
+		{
+			"source": "background",
+			"tiles": [ "https://wxs.ign.fr/pratique/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=ORTHOIMAGERY.ORTHOPHOTOS&STYLE=normal&TILEMATRIXSET=PM&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image%2Fjpeg" ],
+			"name": "Vue aérienne",
+			"icon": "aerial",
+			"attribution": "<a href=\"https://openstreetmap.fr/bdortho\" target=\"_blank\">&copy; BDOrtho IGN</a>"
+		},
+		{
+			"source": "background",
+			"tiles": "mapillary",
+			"name": "Photos de rue",
+			"icon": "picture"
+		},
+		{ "source": "stats" }
+	],
+	"statistics": {
+		"count": true,
+		"feature_name": "commerces",
+		"osmose_tasks": "commerces importées",
+		"points": { "add": 2, "edit": 3, "note": 1 }
+	},
+	"editors": {
+		"all": {
+			"comment": "Contribution sur les commerces",
+			"hashtags": "commercesosmfr,commerce"
+		},
+		"pdm": {
+			"fields": [
+				{ "type": "hidden", "tags": { "shop": "*", "amenity": "*", "office": "*", "craft": "*", "ref:FR:SIRET": "*", "source": "*" } },
+				{ "type": "text", "name": "Nom", "tag": "name" },
+				{ "type": "text", "name": "Téléphone", "tag": "phone", "optional": true, "description": "Au format international : +33 X XX XX XX XX" },
+				{ "type": "text", "name": "Courriel", "tag": "email", "optional": true },
+				{ "type": "text", "name": "Site web officiel", "tag": "website", "optional": true },
+				{ "type": "select", "name": "Accessibilité fauteuil roulant", "tag": "wheelchair", "optional": true, "values": [
+					{ "v": "yes", "l": "Complètement accessible" },
+					{ "v": "limited", "l": "Partiellement accessible" },
+					{ "v": "no", "l": "Pas accessible" }
+				] },
+				{ "type": "textarea", "name": "Autres informations", "tag": "note", "description": "Horaires, infos pratiques...", "optional": true }
+			],
+			"title": {
+				"add": "Ajouter un commerce",
+				"edit": "Compléter le commerce"
+			}
+		},
+		"iD": {
+			"background": "fr.ign.bdortho"
+		}
+	}
+}
