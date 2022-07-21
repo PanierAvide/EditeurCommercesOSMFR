@@ -1,90 +1,1315 @@
 {
-	"id": "2022-01_shop",
-	"title": "Commerces",
-	"start_date": "2022-01-01",
-	"end_date": "9999-12-31",
-	"summary": "Établissement spécialisé dans la vente de détail",
-	"links": {
-		"osmwiki": "https://wiki.openstreetmap.org/wiki/FR:Key:shop"
-	},
-	"database": {
-		"osmium_tag_filter": "nw/shop nw/craft nw/office=educational_institution,employment_agency, estate_agent,guide,insurance,moving_company,private_investigator,travel_agent,visa,it nw/amenity=bar,cafe,fast_food,food_court,ice_cream,pub,restaurant,driving_school,boat_rental,car_rental,car_wash,fuel,bank,bureau_de_change,pharmacy,cinema,nightclub,animal_boarding,animal_breeding,crematorium,internet_cafe,post_office,public_bath,pharmacy,vehicle_inspection",
-		"imposm": {
-			"types": ["point", "polygon"],
-			"mapping": {
-				"shop": ["__any__"],
-				"craft": ["__any__"],
-				"office": ["educational_institution","employment_agency"," estate_agent","guide","insurance","moving_company","private_investigator","travel_agent","visa","it"],
-				"amenity": ["bar","cafe","fast_food","food_court","ice_cream","pub","restaurant","driving_school","boat_rental","car_rental","car_wash","fuel","bank","bureau_de_change","pharmacy","cinema","nightclub","animal_boarding","animal_breeding","crematorium","internet_cafe","post_office","public_bath","pharmacy","vehicle_inspection"]
-			}
-		}
-	},
-	"datasources": [
-		{
-			"source": "osmose",
-			"item": "8310", "country": "france*",
-			"name": "Commerce à localiser",
-			"description": "Il y a un commerce à proximité. Vérifiez s'il existe toujours, sa position exacte sur le terrain, puis ajoutez-le à OpenStreetMap.",
-			"buttons": { "add": "Intégrer ce commerce" }
-		},
-		{
-			"source": "notes",
-			"name": "Commerce à intégrer",
-			"description": "Une personne a créé une note ici, vérifiez puis éditez OSM pour intégrer les informations.",
-			"terms": [ "commerce", "shop", "boutique", "magasin", "vente" ]
-		},
-		{
-			"source": "osm",
-			"name": "Commerce dans OSM",
-			"description": "Ce commerce existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
-		},
-		{
-			"source": "background",
-			"tiles": [ "https://wxs.ign.fr/pratique/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=ORTHOIMAGERY.ORTHOPHOTOS&STYLE=normal&TILEMATRIXSET=PM&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image%2Fjpeg" ],
-			"name": "Vue aérienne",
-			"icon": "aerial",
-			"attribution": "<a href=\"https://openstreetmap.fr/bdortho\" target=\"_blank\">&copy; BDOrtho IGN</a>"
-		},
-		{
-			"source": "background",
-			"tiles": "mapillary",
-			"name": "Photos de rue",
-			"icon": "picture"
-		},
-		{ "source": "stats" }
-	],
-	"statistics": {
-		"count": true,
-		"feature_name": "commerces",
-		"osmose_tasks": "commerces importées",
-		"points": { "add": 2, "edit": 3, "note": 1 }
-	},
-	"editors": {
-		"all": {
-			"comment": "Contribution sur les commerces",
-			"hashtags": "commercesosmfr,commerce"
-		},
-		"pdm": {
-			"fields": [
-				{ "type": "hidden", "tags": { "shop": "*", "amenity": "*", "office": "*", "craft": "*", "ref:FR:SIRET": "*", "source": "*" } },
-				{ "type": "text", "name": "Nom", "tag": "name" },
-				{ "type": "text", "name": "Téléphone", "tag": "phone", "optional": true, "description": "Au format international : +33 X XX XX XX XX" },
-				{ "type": "text", "name": "Courriel", "tag": "email", "optional": true },
-				{ "type": "text", "name": "Site web officiel", "tag": "website", "optional": true },
-				{ "type": "select", "name": "Accessibilité fauteuil roulant", "tag": "wheelchair", "optional": true, "values": [
-					{ "v": "yes", "l": "Complètement accessible" },
-					{ "v": "limited", "l": "Partiellement accessible" },
-					{ "v": "no", "l": "Pas accessible" }
-				] },
-				{ "type": "textarea", "name": "Autres informations", "tag": "note", "description": "Horaires, infos pratiques...", "optional": true }
-			],
-			"title": {
-				"add": "Ajouter un commerce",
-				"edit": "Compléter le commerce"
-			}
-		},
-		"iD": {
-			"background": "fr.ign.bdortho"
-		}
-	}
+  "id": "2022-01_shop",
+  "title": "Commerces",
+  "start_date": "2022-01-01",
+  "end_date": "9999-12-31",
+  "summary": "Établissement spécialisé dans la vente de détail",
+  "links": {
+    "osmwiki": "https://wiki.openstreetmap.org/wiki/FR:Key:shop"
+  },
+  "database": {
+    "osmium_tag_filter": "nw/shop nw/craft nw/office=educational_institution,employment_agency, estate_agent,guide,insurance,moving_company,private_investigator,travel_agent,visa,it nw/amenity=bar,cafe,fast_food,food_court,ice_cream,pub,restaurant,driving_school,boat_rental,car_rental,car_wash,fuel,bank,bureau_de_change,pharmacy,cinema,nightclub,animal_boarding,animal_breeding,crematorium,internet_cafe,post_office,public_bath,pharmacy,vehicle_inspection",
+    "imposm": {
+      "types": [
+        "point",
+        "polygon"
+      ],
+      "mapping": {
+        "shop": [
+          "__any__"
+        ],
+        "craft": [
+          "__any__"
+        ],
+        "office": [
+          "educational_institution",
+          "employment_agency",
+          " estate_agent",
+          "guide",
+          "insurance",
+          "moving_company",
+          "private_investigator",
+          "travel_agent",
+          "visa",
+          "it"
+        ],
+        "amenity": [
+          "animal_boarding",
+          "animal_breeding",
+          "bank",
+          "bar",
+          "cafe",
+          "fast_food",
+          "food_court",
+          "ice_cream",
+          "pub",
+          "restaurant",
+          "driving_school",
+          "boat_rental",
+          "car_rental",
+          "car_wash",
+          "fuel",
+          "bureau_de_change",
+          "pharmacy",
+          "cinema",
+          "nightclub",
+          "crematorium",
+          "internet_cafe",
+          "post_office",
+          "public_bath",
+          "pharmacy",
+          "vehicle_inspection"
+        ]
+      }
+    }
+  },
+  "datasources": [
+    {
+      "source": "osmose",
+      "item": "8310",
+      "country": "france*",
+      "name": "Commerce à localiser",
+      "description": "Il y a un commerce à proximité. Vérifiez s'il existe toujours, sa position exacte sur le terrain, puis ajoutez-le à OpenStreetMap.",
+      "buttons": {
+        "add": "Intégrer ce commerce"
+      }
+    },
+    {
+      "source": "notes",
+      "name": "Commerce à intégrer",
+      "description": "Une personne a créé une note ici, vérifiez puis éditez OSM pour intégrer les informations.",
+      "terms": [
+        "commerce",
+        "shop",
+        "boutique",
+        "magasin",
+        "vente"
+      ]
+    },
+    {
+      "source": "osm",
+      "name": "Commerce dans OSM",
+      "description": "Ce commerce existe déjà dans OSM. Vous pouvez compléter ou modifier ses informations si nécessaire."
+    },
+    {
+      "source": "background",
+      "tiles": [
+        "https://wxs.ign.fr/pratique/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=ORTHOIMAGERY.ORTHOPHOTOS&STYLE=normal&TILEMATRIXSET=PM&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image%2Fjpeg"
+      ],
+      "name": "Vue aérienne",
+      "icon": "aerial",
+      "attribution": "<a href=\"https://openstreetmap.fr/bdortho\" target=\"_blank\">&copy; BDOrtho IGN</a>"
+    },
+    {
+      "source": "background",
+      "tiles": "mapillary",
+      "name": "Photos de rue",
+      "icon": "picture"
+    },
+    {
+      "source": "stats"
+    }
+  ],
+  "statistics": {
+    "count": true,
+    "feature_name": "commerces",
+    "osmose_tasks": "commerces importées",
+    "points": {
+      "add": 2,
+      "edit": 3,
+      "note": 1
+    }
+  },
+  "editors": {
+    "all": {
+      "comment": "Contribution sur les commerces",
+      "hashtags": "commercesosmfr,commerce"
+    },
+    "pdm": {
+      "fields": [
+        {
+          "type": "hidden",
+          "tags": {
+            "shop": "*",
+            "amenity": "*",
+            "office": "*",
+            "craft": "*",
+            "ref:FR:SIRET": "*",
+            "source": "*"
+          }
+        },
+        {
+          "type": "select",
+          "name": "Type de commerce",
+          "tag": "_select1",
+          "values": [
+            {
+              "l": "Agence d'assurance",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "",
+                "office": "insurance"
+              }
+            },
+            {
+              "l": "Agence de voyages",
+              "tags": {
+                "shop": "travel_agency",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Agence immobilière",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "",
+                "office": "estate_agent"
+              }
+            },
+            {
+              "l": "Agence pour l'emploi",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "",
+                "office": "employment_agency"
+              }
+            },
+            {
+              "l": "Aire de restauration, food-court",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "food_court",
+                "office": ""
+              }
+            },
+            {
+              "l": "Animalerie",
+              "tags": {
+                "shop": "pet",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Antiquaire",
+              "tags": {
+                "shop": "antiques",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Audioprothésiste",
+              "tags": {
+                "shop": "hearing_aids",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Auto-école",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "driving_school",
+                "office": ""
+              }
+            },
+            {
+              "l": "Bagagerie",
+              "tags": {
+                "shop": "bag",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Bain public",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "public_bath",
+                "office": ""
+              }
+            },
+            {
+              "l": "Banque",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "bank",
+                "office": ""
+              }
+            },
+            {
+              "l": "Bar",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "bar",
+                "office": ""
+              }
+            },
+            {
+              "l": "Bijouterie",
+              "tags": {
+                "shop": "jewelry",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Boîte de nuit",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "nightclub",
+                "office": ""
+              }
+            },
+            {
+              "l": "Boucher",
+              "tags": {
+                "shop": "butcher",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Boulangerie",
+              "tags": {
+                "shop": "bakery",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Boutique de cadeaux",
+              "tags": {
+                "shop": "gift",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Boutique de vente de billets",
+              "tags": {
+                "shop": "ticket",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Boutique de vente de cafés",
+              "tags": {
+                "shop": "coffee",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Bureau de change",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "bureau_de_change",
+                "office": ""
+              }
+            },
+            {
+              "l": "Bureau de poste",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "post_office",
+                "office": ""
+              }
+            },
+            {
+              "l": "Bureau de tabac",
+              "tags": {
+                "shop": "tobacco",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Bureau des guides",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "",
+                "office": "guide"
+              }
+            },
+            {
+              "l": "Café",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "cafe",
+                "office": ""
+              }
+            },
+            {
+              "l": "Camping",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "",
+                "office": "",
+                "tourism": "camp_site"
+              }
+            },
+            {
+              "l": "Centre de contrôle technique",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "vehicle_inspection",
+                "office": ""
+              }
+            },
+            {
+              "l": "Centre de formation",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "",
+                "office": "educational_institution"
+              }
+            },
+            {
+              "l": "Chauffagiste",
+              "tags": {
+                "shop": "",
+                "craft": "hvac",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Chocolatier",
+              "tags": {
+                "shop": "chocolate",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Cinéma",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "cinema",
+                "office": ""
+              }
+            },
+            {
+              "l": "Concessionnaire automobile",
+              "tags": {
+                "shop": "car",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Confiserie",
+              "tags": {
+                "shop": "confectionery",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Construction de fenêtres",
+              "tags": {
+                "shop": "",
+                "craft": "window_construction",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Cordonnier",
+              "tags": {
+                "shop": "",
+                "craft": "shoemaker",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Crématorium",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "crematorium",
+                "office": ""
+              }
+            },
+            {
+              "l": "Cuisiniste",
+              "tags": {
+                "shop": "kitchen",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Cybercafé",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "internet_cafe",
+                "office": ""
+              }
+            },
+            {
+              "l": "Dépôt-vente/produits d'occasion",
+              "tags": {
+                "shop": "second_hand",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Électricien",
+              "tags": {
+                "shop": "",
+                "craft": "electrician",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Enquêteur privé/détective",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "",
+                "office": "private_investigator"
+              }
+            },
+            {
+              "l": "Entreprise de déménagement",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "",
+                "office": "moving_company"
+              }
+            },
+            {
+              "l": "Épicerie",
+              "tags": {
+                "shop": "grocery",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Épicerie / Supérette",
+              "tags": {
+                "shop": "convenience",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Épicerie de luxe",
+              "tags": {
+                "shop": "deli",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Fleuriste",
+              "tags": {
+                "shop": "florist",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Fromager",
+              "tags": {
+                "shop": "cheese",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Funérarium",
+              "tags": {
+                "shop": "funeral_directors",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Garage de réparation automobile",
+              "tags": {
+                "shop": "car_repair",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Grand magasin",
+              "tags": {
+                "shop": "department_store",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Hôtel",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "",
+                "office": "",
+                "tourism": "hotel"
+              }
+            },
+            {
+              "l": "Installation d'élevage d'animaux",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "animal_breeding",
+                "office": ""
+              }
+            },
+            {
+              "l": "Jardinerie",
+              "tags": {
+                "shop": "garden_centre",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Kiosque",
+              "tags": {
+                "shop": "kiosk",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Laverie",
+              "tags": {
+                "shop": "laundry",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Librairie",
+              "tags": {
+                "shop": "books",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Location de bateau",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "boat_rental",
+                "office": ""
+              }
+            },
+            {
+              "l": "Location de voiture",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "car_rental",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin à prix unique ou à bas prix",
+              "tags": {
+                "shop": "variety_store",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin CBD",
+              "tags": {
+                "shop": "cannabis",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin d'E-cigarettes",
+              "tags": {
+                "shop": "E-cigarette",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin d'équipement sportif",
+              "tags": {
+                "shop": "sports",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin d'informatique",
+              "tags": {
+                "shop": "computer",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de boissons",
+              "tags": {
+                "shop": "beverages",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de bricolage",
+              "tags": {
+                "shop": "doityourself",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de chaussures",
+              "tags": {
+                "shop": "shoes",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de cosmétiques",
+              "tags": {
+                "shop": "cosmetics",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de couture",
+              "tags": {
+                "shop": "sewing",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de crèmes glacées",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "ice_cream",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de décoration d'intérieur",
+              "tags": {
+                "shop": "interior_decoration",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de jeux de plateau",
+              "tags": {
+                "shop": "games",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de jouets",
+              "tags": {
+                "shop": "toys",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de journaux",
+              "tags": {
+                "shop": "newsagent",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de literie",
+              "tags": {
+                "shop": "bed",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de location et vente de jeux vidéo",
+              "tags": {
+                "shop": "video_games",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de matériel de sports de plein air",
+              "tags": {
+                "shop": "outdoor",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de matériel hi-fi",
+              "tags": {
+                "shop": "hifi",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de matériel médical",
+              "tags": {
+                "shop": "medical_supply",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de meubles",
+              "tags": {
+                "shop": "furniture",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de montres",
+              "tags": {
+                "shop": "watches",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de musique",
+              "tags": {
+                "shop": "music",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de pièces automobiles",
+              "tags": {
+                "shop": "car_parts",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de producteurs",
+              "tags": {
+                "shop": "farm",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de produits surgelés",
+              "tags": {
+                "shop": "frozen_food",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de tapis",
+              "tags": {
+                "shop": "carpet",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de téléphonie mobile",
+              "tags": {
+                "shop": "mobile_phone",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de thés",
+              "tags": {
+                "shop": "tea",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de tissus",
+              "tags": {
+                "shop": "fabric",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de vélos",
+              "tags": {
+                "shop": "bicycle",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de vente d'alcool",
+              "tags": {
+                "shop": "alcohol",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Magasin de vêtements",
+              "tags": {
+                "shop": "clothes",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Marchand d'art",
+              "tags": {
+                "shop": "art",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Marchand de fruits et légumes",
+              "tags": {
+                "shop": "greengrocer",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Maroquinier",
+              "tags": {
+                "shop": "leather",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Opticien",
+              "tags": {
+                "shop": "optician",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Papeterie",
+              "tags": {
+                "shop": "stationery",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Parapharmacie",
+              "tags": {
+                "shop": "chemist",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Parfumerie",
+              "tags": {
+                "shop": "perfumery",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Pâtisserie",
+              "tags": {
+                "shop": "pastry",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Pharmacie",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "pharmacy",
+                "office": ""
+              }
+            },
+            {
+              "l": "Photocopie et impression",
+              "tags": {
+                "shop": "copyshop",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Photographe",
+              "tags": {
+                "shop": "",
+                "craft": "photographer",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Plateforme de chargement d'animaux",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "animal_boarding",
+                "office": ""
+              }
+            },
+            {
+              "l": "Plombier",
+              "tags": {
+                "shop": "",
+                "craft": "plumber",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Poissonnerie / Vente de fruits de mer",
+              "tags": {
+                "shop": "seafood",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Pressing",
+              "tags": {
+                "shop": "dry_cleaning",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Pub",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "pub",
+                "office": ""
+              }
+            },
+            {
+              "l": "Quincaillerie",
+              "tags": {
+                "shop": "hardware",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Réparateur de motos",
+              "tags": {
+                "shop": "motorcycle_repair",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Restaurant",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "restaurant",
+                "office": ""
+              }
+            },
+            {
+              "l": "Restauration rapide",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "fast_food",
+                "office": ""
+              }
+            },
+            {
+              "l": "Salon de beauté",
+              "tags": {
+                "shop": "beauty",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Salon de coiffure",
+              "tags": {
+                "shop": "hairdresser",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Salon de massage",
+              "tags": {
+                "shop": "massage",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Salon de tatouage",
+              "tags": {
+                "shop": "tatoo",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Station de lavage de voiture",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "car_wash",
+                "office": ""
+              }
+            },
+            {
+              "l": "Station-service",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "fuel",
+                "office": ""
+              }
+            },
+            {
+              "l": "Supermarché",
+              "tags": {
+                "shop": "supermarket",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Tailleur",
+              "tags": {
+                "shop": "",
+                "craft": "dressmaker/tailor",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Théâtre",
+              "tags": {
+                "shop": "",
+                "craft": "",
+                "amenity": "theatre",
+                "office": ""
+              }
+            },
+            {
+              "l": "Traiteur",
+              "tags": {
+                "shop": "",
+                "craft": "caterer",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Vendeur de motos",
+              "tags": {
+                "shop": "motorcycle",
+                "craft": "",
+                "amenity": "",
+                "office": ""
+              }
+            },
+            {
+              "l": "Autre type de commerce",
+              "tags": {
+                "shop": "yes"
+              }
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "Nom",
+          "tag": "name"
+        },
+        {
+          "type": "text",
+          "name": "Téléphone",
+          "tag": "phone",
+          "optional": true,
+          "description": "Au format international : +33 X XX XX XX XX"
+        },
+        {
+          "type": "text",
+          "name": "Courriel",
+          "tag": "email",
+          "optional": true
+        },
+        {
+          "type": "text",
+          "name": "Site web officiel",
+          "tag": "website",
+          "optional": true
+        },
+        {
+          "type": "select",
+          "name": "Accessibilité fauteuil roulant",
+          "tag": "wheelchair",
+          "optional": true,
+          "values": [
+            {
+              "v": "yes",
+              "l": "Complètement accessible"
+            },
+            {
+              "v": "limited",
+              "l": "Partiellement accessible"
+            },
+            {
+              "v": "no",
+              "l": "Pas accessible"
+            }
+          ]
+        },
+        {
+          "type": "textarea",
+          "name": "Autres informations",
+          "tag": "note",
+          "description": "Horaires, infos pratiques...",
+          "optional": true
+        }
+      ],
+      "title": {
+        "add": "Ajouter un commerce",
+        "edit": "Compléter le commerce"
+      }
+    },
+    "iD": {
+      "background": "fr.ign.bdortho"
+    }
+  }
 }
