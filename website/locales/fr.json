@@ -145,6 +145,11 @@
 	"Retrouvez l'ensemble des données directement sur le site d'OpenStreetMap.": "Retrouvez l'ensemble des données directement sur le site d'OpenStreetMap.",
 	"BANCO": "BANCO",
 	"Les commerces de France dans OpenStreetMap": "Les commerces de France dans OpenStreetMap",
-	"Catalyseur d'énergies pour OpenStreetMap": "Catalyseur d'énergies pour OpenStreetMap",
+	"Catalyseur d'énergies pour OpenStreetMap v%s": "Catalyseur d'énergies pour OpenStreetMap v%s",
 	"Projet du mois OpenStreetMap": "Projet du mois OpenStreetMap"
+	"Les projets": "Les projets",
+	"À propos": "À propos",
+	"En ce moment : %s projets prioritaires": "En ce moment : %s projets prioritaires",
+	"Tous nos projets": "Tous nos projets",
+	"Retrouvez l'ensemble des projets du mois, leurs outils, statistiques et données.": "Retrouvez l'ensemble des projets du mois, leurs outils, statistiques et données."
 }

@@ -9,10 +9,13 @@ const path = require('path');
 const fs = require('fs');
 const fetch = require('node-fetch');
 const projects = require('./projects');
-const CONFIG = require('../config.json');
+const CONFFILE = require('../config.json');
+const PCKGE = require('../package.json');
 const { foldProjects, queryParams, getMapStyle, getMapStatsStyle, getBadgesDetails, getOsmToUrlMappings, getProjectDays } = require('./utils');
 const { Pool } = require('pg');
 const { I18n } = require('i18n');
+
+const CONFIG = Object.assign(CONFFILE, {package_version:PCKGE.version});
 
 /*
  * Connect to database
@@ -86,6 +89,13 @@ app.get('/', (req, res) => {
 	}
 });
 
+// About
+app.get('/about', (req, res) => {
+	if(CONFIG.MAINTENANCE_MODE === true) { return res.status(503).render('pages/maintenance'); }
+
+	res.render('pages/about', Object.assign({ CONFIG }));
+});
+
 // HTTP errors
 app.get('/error/:code', (req, res) => {
 	if(CONFIG.MAINTENANCE_MODE === true) { return res.redirect('/'); }
@@ -151,17 +161,23 @@ app.get('/projects/:id/stats', (req, res) => {
 	const p = projects[req.params.id];
 	const allPromises = [];
 	const osmUserAuthentified = typeof req.query.osm_user === "string" && req.query.osm_user.trim().length > 0;
+	const daysToKeep = (day) => {
+		if(Date.now() - (new Date(p.start_date)).getTime() < 1000*60*60*24*60) { return true; }
+		else if(Date.now() - (new Date(day)).getTime() < 1000*60*60*24) { return true; }
+		else { return day.substring(8, 10) == "01"; }
+	};
 
 	// Fetch Osmose statistics
 	allPromises.push(Promise.all(p.datasources
 	.filter(ds => ds.source === "osmose")
 	.map(ds => {
-		const params = { item: ds.item, class: ds.class, start_date: p.start_date, end_date: p.end_date, country: ds.country };
+		const params = { item: ds.item, class: ds.class, start_date: p.start_date, country: ds.country };
 		return fetch(`${CONFIG.OSMOSE_URL}/fr/issues/graph.json?${queryParams(params)}`)
 		.then(res => res.json())
 		.then(res => ({
 			label: ds.name,
 			data: Object.entries(res.data)
+				.filter(e => daysToKeep(e[0]))
 				.map(e => ({ t: e[0], y: e[1] }))
 				.sort((a,b) => a.t.localeCompare(b.t)),
 			fill: false,
