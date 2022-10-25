@@ -414,10 +414,18 @@ exports.getBadgesDetails = (projects, badgesRows) => {
 // List of OSM tags -> URL mappings
 exports.getOsmToUrlMappings = () => {
 	const res = {};
+	const hasPreferred = tag2link.filter(t => t.rank === "preferred").map(t => t.key.substring(4));
 
-	tag2link.filter(t => t.rank !== "deprecated").forEach(t => {
+	tag2link
+	.filter(t => t.rank !== "deprecated")
+	.forEach(t => {
 		const osmKey = t.key.substring(4);
-		if(Array.isArray(res[osmKey])) {
+		if(hasPreferred.includes(osmKey)) {
+			if(t.rank === "preferred") {
+				res[osmKey] = t.url;
+			}
+		}
+		else if(Array.isArray(res[osmKey])) {
 			res[osmKey].push(t.url);
 		}
 		else if(typeof res[osmKey] === "string") {
